@@ -1,0 +1,55 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api rootProject.ext.dependencies["androidx"]
+    api rootProject.ext.dependencies["gson"]
+    api rootProject.ext.dependencies["retrofit"]
+    api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["rxjava"]
+    api rootProject.ext.dependencies["converter_gson"]
+    api rootProject.ext.dependencies["adapter_rxjava"]
+    api rootProject.ext.dependencies["okhttp"]
+    api rootProject.ext.dependencies["logging_interceptor"]
+    api rootProject.ext.dependencies["arouter_api"]
+    annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
+    api rootProject.ext.dependencies["fastjson"]
+    api rootProject.ext.dependencies["glide"]
+    annotationProcessor rootProject.ext.dependencies["glide_compiler"]
+    api rootProject.ext.dependencies["recycler_adapter_helper"]
+    api rootProject.ext.dependencies["retrofit_cookie"]
+    api rootProject.ext.dependencies["smart_refreshlayout"]
+    api rootProject.ext.dependencies["photoview"]
+    api rootProject.ext.dependencies["andpermission"]
+    api rootProject.ext.dependencies["eventbus"]
+    api rootProject.ext.dependencies["multidex"]
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+
+}
